@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="enrollment.pageTitle">Enroll — Full-Stack Modern JavaScript &amp; React Pro — EduTrack IT</title>
+  <meta name="description" content="Complete your enrollment in Full-Stack Modern JavaScript and React Pro.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <%- include('partials/header', { active: 'courses' }) %>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Two-column: form + order summary -->
+      <div class="enrollment-layout">
+
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol role="list">
+            <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
+            <li><a href="courses.html" data-i18n="breadcrumb.courses">Courses</a></li>
+            <li><a href="course-details.html" data-i18n="breadcrumb.courseDetail">Course Details</a></li>
+            <li aria-current="page" data-i18n="breadcrumb.enrollment">Enrollment</li>
+          </ol>
+        </nav>
+
+        <!-- Enrollment form -->
+        <section aria-labelledby="enroll-heading">
+          <h1 id="enroll-heading" data-i18n="enrollment.title">Complete Your Enrollment</h1>
+
+          <form id="enrollment-form" method="get" action="index.html">
+
+            <!-- Personal information -->
+            <fieldset>
+              <legend data-i18n="enrollment.personalInfo">Personal Information</legend>
+
+              <div class="form-group">
+                <label for="full-name">
+                  <span data-i18n="enrollment.fullName">Full name</span>
+                  <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="full-name"
+                  type="text"
+                  name="full_name"
+                  autocomplete="name"
+                  required
+                  minlength="2"
+                  maxlength="100"
+                  pattern="^[A-Za-z\s\-]+$"
+                  title="Only letters, spaces, and hyphens allowed"
+                  aria-required="true"
+                  placeholder="Jane Smith"
+                  data-i18n-placeholder="enrollment.fullNamePlaceholder"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  <span data-i18n="enrollment.email">Email address</span>
+                  <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  aria-required="true"
+                  aria-describedby="email-error"
+                  placeholder="jane@example.com"
+                  data-i18n-placeholder="enrollment.emailPlaceholder"
+                >
+                <span id="email-error" role="alert" hidden data-i18n="enrollment.emailError">
+                  Please enter a valid email address.
+                </span>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">
+                  <span data-i18n="enrollment.phone">Phone number</span>
+                  <small data-i18n="common.optional">(optional)</small>
+                </label>
+                <input
+                  id="phone"
+                  type="tel"
+                  name="phone"
+                  autocomplete="tel"
+                  pattern="^\+?[0-9\s\-\(\)]+$"
+                  title="Valid phone number format"
+                  placeholder="+1 555 000 0000"
+                >
+              </div>
+
+            </fieldset>
+
+            <!-- Account credentials -->
+            <fieldset>
+              <legend data-i18n="enrollment.createAccount">Create Account</legend>
+
+              <div class="form-group">
+                <label for="password">
+                  <span data-i18n="enrollment.password">Password</span>
+                  <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="password"
+                  type="password"
+                  name="password"
+                  autocomplete="new-password"
+                  required
+                  minlength="8"
+                  maxlength="72"
+                  aria-required="true"
+                  aria-describedby="password-hint"
+                  placeholder="At least 8 characters"
+                  data-i18n-placeholder="enrollment.passwordPlaceholder"
+                >
+                <small id="password-hint" data-i18n="enrollment.passwordHint">
+                  Must be at least 8 characters.
+                </small>
+              </div>
+
+            </fieldset>
+
+            <!-- Payment -->
+            <fieldset>
+              <legend data-i18n="enrollment.payment">Payment Details</legend>
+
+              <div class="form-group">
+                <label for="card-number">
+                  <span data-i18n="enrollment.cardNumber">Card number</span>
+                  <span aria-hidden="true">*</span>
+                </label>
+                <input
+                  id="card-number"
+                  type="text"
+                  name="cc_number"
+                  autocomplete="cc-number"
+                  inputmode="numeric"
+                  required
+                  minlength="13"
+                  maxlength="19"
+                  pattern="[0-9\s]+"
+                  title="Only digits and spaces allowed"
+                  aria-required="true"
+                  placeholder="1234 5678 9012 3456"
+                >
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="card-expiry">
+                    <span data-i18n="enrollment.expiry">Expiry date</span>
+                    <span aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    id="card-expiry"
+                    type="text"
+                    name="cc_exp"
+                    autocomplete="cc-exp"
+                    inputmode="numeric"
+                    required
+                    pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$"
+                    title="Format MM/YY"
+                    maxlength="5"
+                    aria-required="true"
+                    placeholder="MM/YY"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="card-cvc">
+                    <span data-i18n="enrollment.cvc">CVC</span>
+                    <span aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    id="card-cvc"
+                    type="text"
+                    name="cc_csc"
+                    autocomplete="cc-csc"
+                    inputmode="numeric"
+                    required
+                    pattern="^[0-9]{3,4}$"
+                    title="3 or 4 digits"
+                    maxlength="4"
+                    aria-required="true"
+                    placeholder="123"
+                  >
+                </div>
+              </div>
+
+            </fieldset>
+
+            <!-- Terms -->
+            <div class="form-group">
+              <label class="form-label--checkbox">
+                <input
+                  type="checkbox"
+                  name="agree_terms"
+                  required
+                  aria-required="true"
+                  aria-describedby="terms-error"
+                >
+                <span data-i18n="enrollment.agreeTerms">
+                  I agree to the <a href="#">Terms of Service</a>
+                  and <a href="#">Privacy Policy</a>
+                </span>
+              </label>
+              <span id="terms-error" role="alert" hidden data-i18n="enrollment.termsError">
+                You must accept the terms to continue.
+              </span>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full" data-i18n="enrollment.submit">
+              Pay $199 &amp; Enroll Now
+            </button>
+
+          </form>
+      </div><!-- /.enrollment-layout -->
+
+    </div><!-- /.container -->
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script type="module" src="js/nav.js"></script>
+</body>
+</html>

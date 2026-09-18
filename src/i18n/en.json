@@ -1,0 +1,112 @@
+// i18n/en.json — English translation keys
+// Used with data-i18n attributes for Lab 2 bonus (i18n preparation)
+{
+  "brand": {
+    "name": "EduTrack IT"
+  },
+  "nav": {
+    "home": "Home",
+    "courses": "Courses",
+    "signIn": "Sign In",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "footer": {
+    "copy": "© 2026 EduTrack IT Online Education. All rights reserved."
+  },
+  "home": {
+    "pageTitle": "EduTrack IT — Master Modern IT Skills",
+    "eyebrow": "Accredited Tech Tracks",
+    "heroTitle": "Master Modern IT Skills with Industry Mentors",
+    "heroDesc": "Interactive curriculum focusing on production Web Architecture, Cloud Deployment, and AI. Build real projects and pass system-design interviews.",
+    "exploreCourses": "Explore Courses",
+    "careerRoadmap": "Career Roadmap",
+    "featuredTitle": "Featured Programs",
+    "viewAll": "View all courses"
+  },
+  "courses": {
+    "pageTitle": "Courses — EduTrack IT",
+    "title": "Explore All Courses",
+    "subtitle": "Production-focused tracks designed by senior engineers.",
+    "searchLabel": "Search courses",
+    "searchPlaceholder": "Search courses…",
+    "filtersLabel": "Course filters",
+    "listHeading": "Course list"
+  },
+  "filters": {
+    "domain": "Domain",
+    "level": "Experience Level",
+    "frontend": "Frontend (14)",
+    "backend": "Backend (10)",
+    "aiml": "AI & Machine Learning (8)",
+    "devops": "DevOps & Cloud (6)",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced"
+  },
+  "card": {
+    "details": "Details",
+    "duration": "Duration",
+    "category": {
+      "development": "Development",
+      "aiml": "AI & ML",
+      "cloudOps": "Cloud Ops",
+      "backend": "Backend",
+      "security": "Security"
+    }
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "courses": "Courses",
+    "courseDetail": "Course Details",
+    "enrollment": "Enrollment"
+  },
+  "courseDetail": {
+    "duration": "Duration:",
+    "level": "Level:",
+    "rating": "Rating:",
+    "language": "Language:",
+    "intermediate": "Intermediate",
+    "aboutTitle": "About this course",
+    "learnTitle": "What you'll learn",
+    "curriculumTitle": "Curriculum"
+  },
+  "enroll": {
+    "access": "Lifetime access",
+    "certificate": "Certificate of completion",
+    "mentor": "4 mentor sessions",
+    "community": "Private Discord community",
+    "guarantee": "30-day money-back guarantee",
+    "cta": "Enroll Now"
+  },
+  "enrollment": {
+    "pageTitle": "Enroll — EduTrack IT",
+    "title": "Complete Your Enrollment",
+    "personalInfo": "Personal Information",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "Jane Smith",
+    "email": "Email address",
+    "emailPlaceholder": "jane@example.com",
+    "emailError": "Please enter a valid email address.",
+    "phone": "Phone number",
+    "createAccount": "Create Account",
+    "password": "Password",
+    "passwordPlaceholder": "At least 8 characters",
+    "passwordHint": "Must be at least 8 characters.",
+    "payment": "Payment Details",
+    "cardNumber": "Card number",
+    "expiry": "Expiry date",
+    "cvc": "CVC",
+    "agreeTerms": "I agree to the Terms of Service and Privacy Policy",
+    "termsError": "You must accept the terms to continue.",
+    "submit": "Pay $199 & Enroll Now",
+    "orderSummary": "Order summary",
+    "orderSummaryTitle": "Order Summary",
+    "coursePrice": "Course price",
+    "discount": "Discount",
+    "total": "Total"
+  },
+  "common": {
+    "optional": "(optional)"
+  }
+}

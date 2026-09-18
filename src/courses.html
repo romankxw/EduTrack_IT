@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="courses.pageTitle">Courses — EduTrack IT</title>
+  <meta name="description" content="Browse all production-focused IT courses. Filter by domain and experience level.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <%- include('partials/header', { active: 'courses' }) %>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Page heading -->
+      <section class="page-hero" aria-labelledby="page-title">
+        <h1 id="page-title" class="page-hero__title" data-i18n="courses.title">Explore All Courses</h1>
+        <p class="page-hero__subtitle" data-i18n="courses.subtitle">
+          Production-focused tracks designed by senior engineers.
+        </p>
+      </section>
+
+      <!-- Search -->
+      <div class="search-bar">
+        <label for="course-search" data-i18n="courses.searchLabel">Search courses</label>
+        <input
+          id="course-search"
+          type="search"
+          name="q"
+          autocomplete="off"
+          placeholder="Search courses…"
+          data-i18n-placeholder="courses.searchPlaceholder"
+          aria-controls="courses-list"
+        >
+      </div>
+
+      <!-- Two-column layout: aside filters + course grid -->
+      <div class="catalog-layout">
+
+        <!-- Filters sidebar -->
+        <aside class="filters" aria-label="Course filters" data-i18n-aria-label="courses.filtersLabel">
+          <form>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title" data-i18n="filters.domain">Domain</legend>
+              <ul role="list">
+                <li>
+                  <label class="filter-label">
+                    <input type="checkbox" name="domain" value="frontend" checked>
+                    <span data-i18n="filters.frontend">Frontend (14)</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="filter-label">
+                    <input type="checkbox" name="domain" value="backend" checked>
+                    <span data-i18n="filters.backend">Backend (10)</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="filter-label">
+                    <input type="checkbox" name="domain" value="ai-ml">
+                    <span data-i18n="filters.aiml">AI &amp; Machine Learning (8)</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="filter-label">
+                    <input type="checkbox" name="domain" value="devops">
+                    <span data-i18n="filters.devops">DevOps &amp; Cloud (6)</span>
+                  </label>
+                </li>
+              </ul>
+            </fieldset>
+
+            <fieldset class="filter-group">
+              <legend class="filter-group__title" data-i18n="filters.level">Experience Level</legend>
+              <ul role="list">
+                <li>
+                  <label class="filter-label">
+                    <input type="checkbox" name="level" value="beginner">
+                    <span data-i18n="filters.beginner">Beginner</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="filter-label">
+                    <input type="checkbox" name="level" value="intermediate" checked>
+                    <span data-i18n="filters.intermediate">Intermediate</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="filter-label">
+                    <input type="checkbox" name="level" value="advanced">
+                    <span data-i18n="filters.advanced">Advanced</span>
+                  </label>
+                </li>
+              </ul>
+            </fieldset>
+
+          </form>
+        </aside>
+
+        <!-- Course list -->
+        <section>
+          <h2 class="visually-hidden" data-i18n="courses.listHeading">Course list</h2>
+
+          <ul id="courses-list" class="course-grid" role="list" aria-live="polite">
+            <% courses.forEach(function(course) { %>
+            <li>
+              <%- include('partials/course-card', { course }) %>
+            </li>
+            <% }); %>
+          </ul>
+
+        </section>
+
+      </div><!-- /.catalog-layout -->
+
+    </div><!-- /.container -->
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script type="module" src="js/nav.js"></script>
+</body>
+</html>

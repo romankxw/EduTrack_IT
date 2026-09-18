@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="home.pageTitle">EduTrack IT — Master Modern IT Skills</title>
+  <meta name="description" content="Accredited online IT courses catalog. Master modern IT skills with industry mentors.">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- schema.org — WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "EduTrack IT",
+    "url": "https://edutrack.it",
+    "description": "Accredited online IT courses catalog with industry mentors.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://edutrack.it/courses.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <%- include('partials/header', { active: 'home' }) %>
+
+  <main id="main">
+
+    <!-- ── Hero ── -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__inner">
+
+          <div class="hero__content">
+            <p class="hero__eyebrow" data-i18n="home.eyebrow">Accredited Tech Tracks</p>
+
+            <h1 id="hero-title" class="hero__title" data-i18n="home.heroTitle">
+              Master Modern IT Skills with Industry Mentors
+            </h1>
+
+            <p class="hero__desc" data-i18n="home.heroDesc">
+              Interactive curriculum focusing on production Web Architecture, Cloud Deployment,
+              and AI. Build real projects and pass system-design interviews.
+            </p>
+
+            <div class="hero__actions">
+              <a href="courses.html" class="btn btn--primary" data-i18n="home.exploreCourses">Explore Courses</a>
+            </div>
+          </div>
+
+          <div class="hero__media">
+            <%# Hero image — art direction: narrow on mobile, wide on desktop -%>
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/hero-wide.webp"
+              >
+              <source
+                media="(min-width: 768px)"
+                srcset="img/hero-wide.jpg"
+              >
+              <source type="image/webp" srcset="img/hero-narrow.webp">
+              <img
+                src="img/hero-narrow.jpg"
+                width="500"
+                height="320"
+                alt="Students working together on coding projects"
+                loading="eager"
+                fetchpriority="high"
+                class="hero__image"
+              >
+            </picture>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Featured Programs ── -->
+    <section class="programs" aria-labelledby="programs-title">
+      <div class="container">
+
+        <h2 id="programs-title" class="programs__title" data-i18n="home.featuredTitle">
+          Featured Programs
+        </h2>
+
+        <ul class="course-grid" role="list">
+          <% courses.slice(0, 3).forEach(function(course) { %>
+          <li>
+            <%- include('partials/course-card', { course }) %>
+          </li>
+          <% }); %>
+        </ul>
+
+        <div class="programs__more">
+          <a href="courses.html" class="btn btn--secondary" data-i18n="home.viewAll">View all courses</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script type="module" src="js/nav.js"></script>
+</body>
+</html>

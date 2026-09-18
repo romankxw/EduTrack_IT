@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Full-Stack Modern JavaScript & React Pro — EduTrack IT</title>
+  <meta name="description" content="Full-Stack Modern JavaScript & React Pro">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- schema.org — Course -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Full-Stack Modern JavaScript & React Pro",
+    "description": "A comprehensive, production-ready curriculum from JavaScript fundamentals to deploying full-stack React applications on the cloud.",
+    "provider": {
+      "@type": "Organization",
+      "name": "EduTrack IT",
+      "sameAs": "https://edutrack.it"
+    },
+    "timeRequired": "PT12W",
+    "educationalLevel": "Intermediate",
+    "inLanguage": "en",
+    "offers": {
+      "@type": "Offer",
+      "price": "199",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "1200",
+      "bestRating": "5"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <%- include('partials/header', { active: 'courses' }) %>
+
+  <main id="main">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol role="list">
+          <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
+          <li><a href="courses.html" data-i18n="breadcrumb.courses">Courses</a></li>
+          <li aria-current="page">Full-Stack Modern JavaScript & React Pro</li>
+        </ol>
+      </nav>
+
+      <!-- Two-column: article + enroll sidebar -->
+      <div class="details-layout">
+
+        <!-- Course content -->
+        <article class="course-details" aria-labelledby="course-title">
+
+          <!-- Course hero image — art direction -->
+          <div class="course-details__thumbnail">
+            <picture>
+              <source
+                media="(min-width: 768px)"
+                type="image/webp"
+                srcset="img/js-react-pro-640.webp 640w, img/js-react-pro-1280.webp 1280w"
+                sizes="(min-width: 1280px) 760px, calc(100vw - 2rem)"
+              >
+              <source
+                media="(min-width: 768px)"
+                srcset="img/js-react-pro-640.jpg 640w, img/js-react-pro-1280.jpg 1280w"
+                sizes="(min-width: 1280px) 760px, calc(100vw - 2rem)"
+              >
+              <source type="image/webp" srcset="img/js-react-pro-380.webp">
+              <img
+                src="img/js-react-pro-380.jpg"
+                width="760"
+                height="428"
+                alt="Full-Stack Modern JavaScript and React Pro — course cover"
+                loading="eager"
+                fetchpriority="high"
+              >
+            </picture>
+          </div>
+
+          <span class="badge" data-i18n="card.category.development">Development</span>
+
+          <h1 id="course-title" class="course-details__title">
+            Full-Stack Modern JavaScript &amp; React Pro
+          </h1>
+
+          <!-- Quick stats -->
+          <ul class="course-stats" role="list" aria-label="Course statistics">
+            <li>
+              <strong data-i18n="courseDetail.duration">Duration:</strong>
+              <span>12 Weeks</span>
+            </li>
+            <li>
+              <strong data-i18n="courseDetail.level">Level:</strong>
+              <span data-i18n="courseDetail.intermediate">Intermediate</span>
+            </li>
+            <li>
+              <strong data-i18n="courseDetail.rating">Rating:</strong>
+              <span aria-label="4.9 out of 5, 1200 reviews">&#9733; 4.9 (1.2k)</span>
+            </li>
+            <li>
+              <strong data-i18n="courseDetail.language">Language:</strong>
+              <span>English</span>
+            </li>
+          </ul>
+
+          <!-- About -->
+          <section aria-labelledby="about-heading">
+            <h2 id="about-heading" data-i18n="courseDetail.aboutTitle">About this course</h2>
+            <p>
+              A comprehensive, production-ready curriculum that takes you from JavaScript
+              fundamentals to deploying full-stack React applications on the cloud. Designed
+              by senior engineers with 10+ years of industry experience.
+            </p>
+            <p>
+              You will build three real-world projects: an e-commerce platform, a real-time
+              chat app, and a data-visualization dashboard — all reviewed by your personal mentor.
+            </p>
+          </section>
+
+          <!-- What you'll learn -->
+          <section aria-labelledby="learn-heading">
+            <h2 id="learn-heading" data-i18n="courseDetail.learnTitle">What you&rsquo;ll learn</h2>
+            <ul>
+              <li>Modern ES2024+ syntax, modules, and async patterns</li>
+              <li>React 19 hooks, context, Suspense, and Server Components</li>
+              <li>Node.js &amp; Express REST API development</li>
+              <li>PostgreSQL, Prisma ORM, and database design</li>
+              <li>Authentication with JWT &amp; OAuth 2.0</li>
+              <li>CI/CD pipeline setup with GitHub Actions</li>
+              <li>System-design interview preparation</li>
+            </ul>
+          </section>
+
+          <!-- Curriculum -->
+          <section aria-labelledby="curriculum-heading">
+            <h2 id="curriculum-heading" data-i18n="courseDetail.curriculumTitle">Curriculum</h2>
+            <ol class="curriculum">
+              <li class="curriculum__week">
+                <h3>Week 1&ndash;2: JavaScript Foundations</h3>
+                <p>Closures, prototypes, event loop, async/await, and Fetch API.</p>
+              </li>
+              <li class="curriculum__week">
+                <h3>Week 3&ndash;5: React Core</h3>
+                <p>Component model, hooks, state management, React Router, and testing.</p>
+              </li>
+              <li class="curriculum__week">
+                <h3>Week 6&ndash;8: Backend &amp; API</h3>
+                <p>Node.js server, REST API design, PostgreSQL, and ORM integration.</p>
+              </li>
+              <li class="curriculum__week">
+                <h3>Week 9&ndash;10: Auth &amp; Security</h3>
+                <p>Session management, JWT, OAuth, CORS, and input sanitization.</p>
+              </li>
+              <li class="curriculum__week">
+                <h3>Week 11&ndash;12: Deployment &amp; System Design</h3>
+                <p>Docker, CI/CD, cloud hosting, performance optimization, interview prep.</p>
+              </li>
+            </ol>
+          </section>
+
+        </article>
+
+        <!-- Enroll sidebar -->
+        <aside class="enroll-card" aria-label="Enrollment information">
+          <p class="enroll-card__price">$199</p>
+          <ul role="list">
+            <li data-i18n="enroll.access">Lifetime access</li>
+            <li data-i18n="enroll.certificate">Certificate of completion</li>
+            <li data-i18n="enroll.mentor">4 mentor sessions</li>
+            <li data-i18n="enroll.community">Private Discord community</li>
+          </ul>
+          <a href="enrollment.html" class="btn btn--primary btn--full" data-i18n="enroll.cta">Enroll Now</a>
+          <p class="enroll-card__guarantee" data-i18n="enroll.guarantee">30-day money-back guarantee</p>
+        </aside>
+
+      </div><!-- /.details-layout -->
+
+    </div><!-- /.container -->
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script type="module" src="js/nav.js"></script>
+</body>
+</html>

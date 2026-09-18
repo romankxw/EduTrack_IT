@@ -1,0 +1,58 @@
+<%# partials/header.ejs
+    Params: active — active nav link id: 'home' | 'courses'
+-%>
+<header class="site-header">
+  <div class="site-header__inner">
+
+      <a href="index.html" class="site-header__logo" data-i18n="brand.name">EduTrack IT</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="main-nav__list" role="list">
+          <li class="main-nav__item">
+            <a
+              href="index.html"
+              class="main-nav__link<%= active === 'home' ? ' main-nav__link--active' : '' %>"
+              <%= active === 'home' ? 'aria-current="page"' : '' %>
+              data-i18n="nav.home"
+            >Home</a>
+          </li>
+          <li class="main-nav__item">
+            <a
+              href="courses.html"
+              class="main-nav__link<%= active === 'courses' ? ' main-nav__link--active' : '' %>"
+              <%= active === 'courses' ? 'aria-current="page"' : '' %>
+              data-i18n="nav.courses"
+            >Courses</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a href="#" class="btn btn--primary" data-i18n="nav.signIn">Sign In</a>
+
+      <!-- Mobile hamburger — visible only on small screens via CSS -->
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Open navigation menu"
+        data-i18n-aria-label="nav.openMenu"
+      >
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+        <span class="nav-toggle__bar"></span>
+      </button>
+
+    </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="mobile-menu" hidden>
+    <nav aria-label="Mobile navigation">
+      <ul role="list">
+        <li><a href="index.html" <%= active === 'home' ? 'aria-current="page"' : '' %> data-i18n="nav.home">Home</a></li>
+        <li><a href="courses.html" <%= active === 'courses' ? 'aria-current="page"' : '' %> data-i18n="nav.courses">Courses</a></li>
+        <li><a href="#" data-i18n="nav.signIn">Sign In</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

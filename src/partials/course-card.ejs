@@ -1,0 +1,46 @@
+<%# partials/course-card.ejs
+    Params: course — object from courses.json
+-%>
+<article class="course-card" aria-labelledby="course-<%= course.id %>">
+
+  <%# Responsive image with srcset (webp + jpg, 3 sizes) -%>
+  <div class="course-card__thumbnail">
+    <picture>
+      <source
+        type="image/webp"
+        srcset="img/<%= course.id %>-380.webp 380w, img/<%= course.id %>-640.webp 640w"
+        sizes="(min-width: 1280px) 380px, (min-width: 768px) 45vw, 100vw"
+      >
+      <img
+        src="img/<%= course.id %>-380.jpg"
+        srcset="img/<%= course.id %>-380.jpg 380w, img/<%= course.id %>-640.jpg 640w"
+        sizes="(min-width: 1280px) 380px, (min-width: 768px) 45vw, 100vw"
+        width="380"
+        height="214"
+        alt="<%= course.title %> — course thumbnail"
+        loading="lazy"
+      >
+    </picture>
+  </div>
+
+  <div class="course-card__body">
+    <div class="course-card__category">
+      <span class="badge"><%= course.category %></span>
+    </div>
+    <h3 id="course-<%= course.id %>" class="course-card__title">
+      <%= course.title %>
+    </h3>
+    <div class="course-card__meta">
+      <span class="course-card__duration" data-i18n-prefix="card.duration"><%= course.duration %></span>
+      <span class="course-card__rating" aria-label="Rating <%= course.rating %> out of 5, <%= course.reviews %> reviews">
+        &#9733; <%= course.rating %> (<%= course.reviews %>)
+      </span>
+    </div>
+  </div>
+
+  <div class="course-card__footer">
+    <span class="course-card__price">$<%= course.price %></span>
+    <a href="course-details.html" class="btn btn--primary btn--sm" data-i18n="card.details">Details</a>
+  </div>
+
+</article>

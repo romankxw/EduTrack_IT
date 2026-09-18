@@ -1,0 +1,18 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+.env
+.env.*
+!.env.example
+
+# Тимчасові та технічні файли (щоб не засмічувати репозиторій)
+scratch/
+
+# Дані з Figma та методички (суто для контексту)
+01_Tokens.json
+02_Components.json
+03_Desktop.json
+figma_data.json
+*.pdf
