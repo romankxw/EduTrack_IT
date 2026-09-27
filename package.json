@@ -1,13 +1,18 @@
 {
   "name": "edutrack-it",
   "version": "1.0.0",
-  "description": "EduTrack IT — Online IT Courses Catalog. Lab 2: HTML semantics.",
+  "description": "EduTrack IT — Online IT Courses Catalog. Lab 3: SCSS, Responsive Design, 7-1 Architecture.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint:css": "stylelint \"src/scss/**/*.scss\""
   },
   "devDependencies": {
+    "sass": "^1.105.0",
+    "stylelint": "^17.15.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.1.1",
     "vite": "^6.3.5",
     "vite-plugin-ejs": "^1.7.0"
   },

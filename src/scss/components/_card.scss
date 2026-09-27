@@ -1,0 +1,111 @@
+// ==========================================================
+// EduTrack IT — Components: Course Card
+// ==========================================================
+@use '../abstracts' as *;
+
+.course-card {
+  @include flex(column, flex-start, stretch);
+  @include transition(transform, box-shadow, border-color);
+
+  height: 100%;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background-color: $color-surface-alt;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(rem(-4));
+    box-shadow: $shadow-md;
+    border-color: $color-border-hover;
+  }
+
+  &__thumbnail {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: tint($color-surface, 50%);
+
+    picture {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: $radius-lg $radius-lg 0 0;
+  }
+
+  &__body {
+    @include flex(column, flex-start, stretch);
+
+    flex: 1;
+    padding: rem(20);
+  }
+
+  &__category {
+    margin-bottom: rem(10);
+  }
+
+  &__title {
+    @include text-style(rem(18), 1.35, $font-weight-semibold);
+
+    margin-bottom: rem(12);
+    color: $color-text;
+    transition: color 0.18s ease;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+
+  // Meta: duration & rating directly follow title with NO top border
+  &__meta {
+    @include flex(row, space-between, center);
+
+    margin-top: auto;
+    font-size: rem(13);
+    color: $color-text-muted;
+  }
+
+  &__duration {
+    font-size: rem(13);
+    color: $color-text-muted;
+  }
+
+  // Rating matches monotonous gray of duration as in Figma
+  &__rating {
+    font-size: rem(13);
+    font-weight: $font-weight-regular;
+    color: $color-text-muted;
+  }
+
+  // Only single border divider in card: between meta and footer
+  &__footer {
+    @include flex(row, space-between, center);
+
+    padding: rem(16) rem(20);
+    border-top: 1px solid tint($color-border, 60%);
+    background-color: $color-surface-alt;
+  }
+
+  &__price {
+    @include text-style(rem(22), 1.2, $font-weight-bold);
+
+    color: $color-text;
+  }
+}

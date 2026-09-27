@@ -1,0 +1,32 @@
+// ==========================================================
+// EduTrack IT — Base: Print Styles (Additional Requirement)
+// ==========================================================
+@media print {
+  .site-header,
+  .site-footer,
+  .main-nav,
+  .nav-toggle,
+  .mobile-menu,
+  .filters,
+  .search-bar,
+  .pagination {
+    display: none !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+  }
+
+  .course-card,
+  .card,
+  .curriculum__module {
+    break-inside: avoid;
+  }
+}

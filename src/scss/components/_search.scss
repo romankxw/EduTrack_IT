@@ -1,0 +1,46 @@
+// ==========================================================
+// EduTrack IT — Components: Search Bar
+// ==========================================================
+@use '../abstracts' as *;
+
+.search-bar {
+  margin-bottom: rem(28);
+
+  label {
+    display: block;
+    margin-bottom: rem(6);
+    font-size: rem(14);
+    font-weight: $font-weight-medium;
+    color: $color-text;
+  }
+
+  input {
+    @include transition(border-color, box-shadow);
+
+    display: block;
+    width: 100%;
+    max-width: rem(420);
+    min-height: rem(44);
+    padding: rem(10) rem(16);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-surface-alt;
+    color: $color-text;
+    font-family: inherit;
+    font-size: rem(15);
+
+    &::placeholder {
+      color: $color-text-muted;
+    }
+
+    &:hover {
+      border-color: $color-border-hover;
+    }
+
+    &:focus-visible {
+      border-color: $color-focus-ring;
+      outline: 2px solid $color-focus-ring;
+      outline-offset: 1px;
+    }
+  }
+}

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Full-Stack Modern JavaScript & React Pro — EduTrack IT</title>
   <meta name="description" content="Full-Stack Modern JavaScript & React Pro">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="scss/main.scss">
 
   <!-- schema.org — Course -->
   <script type="application/ld+json">
@@ -168,16 +168,23 @@
 
         </article>
 
-        <!-- Enroll sidebar -->
+        <!-- Enroll sidebar matching Figma -->
         <aside class="enroll-card" aria-label="Enrollment information">
-          <p class="enroll-card__price">$199</p>
-          <ul role="list">
-            <li data-i18n="enroll.access">Lifetime access</li>
-            <li data-i18n="enroll.certificate">Certificate of completion</li>
-            <li data-i18n="enroll.mentor">4 mentor sessions</li>
-            <li data-i18n="enroll.community">Private Discord community</li>
+          <div class="enroll-card__price-wrap">
+            <span class="enroll-card__price">$199</span>
+            <span class="enroll-card__original-price">$299</span>
+          </div>
+
+          <a href="enrollment.html" class="btn btn--primary btn--full" data-i18n="enroll.cta">Enroll In Course</a>
+
+          <h3 class="enroll-card__features-title">Course Features:</h3>
+          <ul class="enroll-card__features-list" role="list">
+            <li><span aria-hidden="true">&#10003;</span> 12 Weeks of intensive modules</li>
+            <li><span aria-hidden="true">&#10003;</span> 8 Production portfolio tasks</li>
+            <li><span aria-hidden="true">&#10003;</span> Weekly live mentor reviews</li>
+            <li><span aria-hidden="true">&#10003;</span> Verified completion certificate</li>
           </ul>
-          <a href="enrollment.html" class="btn btn--primary btn--full" data-i18n="enroll.cta">Enroll Now</a>
+
           <p class="enroll-card__guarantee" data-i18n="enroll.guarantee">30-day money-back guarantee</p>
         </aside>
 

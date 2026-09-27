@@ -1,0 +1,75 @@
+// ==========================================================
+// EduTrack IT — Abstracts: Mixins
+// ==========================================================
+@use 'sass:math';
+@use 'sass:map';
+@use 'variables' as v;
+@use 'functions' as f;
+
+/// Media query helper for Mobile-First breakpoints
+/// @param {String} $bp - Key from $breakpoints (sm, md, lg)
+@mixin media-up($bp) {
+  $value: map.get(v.$breakpoints, $bp);
+
+  @if not $value {
+    @error "Unknown breakpoint: #{$bp}";
+  }
+
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+/// Container mixin with responsive gutters
+/// @param {Length} $max - Maximum width
+@mixin container($max: v.$container-max) {
+  width: 100%;
+  max-width: $max;
+  margin-inline: auto;
+  padding-inline: v.$gutter-sm;
+
+  @include media-up(md) {
+    padding-inline: v.$gutter-md;
+  }
+}
+
+/// Flexbox shortcut
+@mixin flex($dir: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+/// Typography styling shorthand
+@mixin text-style($size, $lh: 1.5, $weight: v.$font-weight-regular) {
+  font-size: $size;
+  line-height: $lh;
+  font-weight: $weight;
+}
+
+/// Smooth transitions helper
+@mixin transition($props...) {
+  transition-property: $props;
+  transition-duration: map.get(v.$duration, base);
+  transition-timing-function: v.$easing;
+}
+
+// ----------------------------------------------------------
+// Bonus: Custom Grid Mixins with Gutters
+// ----------------------------------------------------------
+
+/// Row wrapper with negative margins matching column gutters
+@mixin row($gutter: v.$gutter-md) {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: -#{math.div($gutter, 2)};
+}
+
+/// Column span calculator
+@mixin col($span, $total: 12, $gutter: v.$gutter-md) {
+  flex: 0 0 math.percentage(math.div($span, $total));
+  max-width: math.percentage(math.div($span, $total));
+  padding-inline: math.div($gutter, 2);
+}

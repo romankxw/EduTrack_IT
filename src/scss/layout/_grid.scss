@@ -1,0 +1,100 @@
+// ==========================================================
+// EduTrack IT — Layout: Grid & Structural Layouts
+// ==========================================================
+@use '../abstracts' as *;
+
+// Container
+.container,
+.page {
+  @include container;
+}
+
+// Responsive Course Grid (3 breakpoints: 360px -> 768px -> 1280px)
+.course-grid,
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(16);
+  list-style: none;
+
+  @include media-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(20);
+  }
+
+  @include media-up(lg) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(24);
+  }
+}
+
+// ----------------------------------------------------------
+// Bonus: Custom Grid System (Row & Col Mixin implementation)
+// ----------------------------------------------------------
+.grid-row {
+  @include row;
+}
+
+.grid-col-12 {
+  @include col(12);
+}
+
+.catalog-item {
+  @include col(12);
+
+  @include media-up(md) {
+    @include col(6);
+  }
+
+  @include media-up(lg) {
+    @include col(4);
+  }
+}
+
+// ----------------------------------------------------------
+// Catalog Page Layout
+// ----------------------------------------------------------
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(24);
+  align-items: start;
+  padding-bottom: rem(64);
+
+  @include media-up(lg) {
+    grid-template-columns: rem(280) 1fr;
+    gap: rem(32);
+  }
+
+  .course-grid {
+    @include media-up(lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+// ----------------------------------------------------------
+// Details Page Layout
+// ----------------------------------------------------------
+.details-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(32);
+  align-items: start;
+  padding-bottom: rem(64);
+
+  @include media-up(lg) {
+    grid-template-columns: 1fr rem(320);
+    gap: rem(40);
+  }
+}
+
+// ----------------------------------------------------------
+// Enrollment Page Layout (Centered single-column layout matching Figma)
+// ----------------------------------------------------------
+.enrollment-layout {
+  width: 100%;
+  max-width: rem(640);
+  margin-inline: auto;
+  padding-bottom: rem(64);
+}

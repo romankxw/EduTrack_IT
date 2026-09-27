@@ -1,0 +1,73 @@
+// ==========================================================
+// EduTrack IT — Base: Typography
+// ==========================================================
+@use '../abstracts' as *;
+
+html {
+  font-size: 100%;
+}
+
+body {
+  @include text-style(rem(16), 1.6, $font-weight-regular);
+}
+
+h1,
+.text-h1 {
+  @include text-style(rem(28), 1.2, $font-weight-bold);
+
+  font-family: $font-heading;
+
+  @include media-up(md) {
+    font-size: rem(36);
+  }
+
+  @include media-up(lg) {
+    font-size: rem(40);
+  }
+}
+
+h2,
+.text-h2 {
+  @include text-style(rem(22), 1.25, $font-weight-semibold);
+
+  font-family: $font-heading;
+
+  @include media-up(md) {
+    font-size: rem(26);
+  }
+
+  @include media-up(lg) {
+    font-size: rem(30);
+  }
+}
+
+h3,
+.text-h3 {
+  @include text-style(rem(18), 1.3, $font-weight-semibold);
+
+  font-family: $font-heading;
+
+  @include media-up(md) {
+    font-size: rem(20);
+  }
+
+  @include media-up(lg) {
+    font-size: rem(22);
+  }
+}
+
+p {
+  line-height: 1.65;
+  margin-bottom: rem(16);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+small,
+.text-caption {
+  @include text-style(rem(13), 1.4, $font-weight-regular);
+
+  color: $color-text-muted;
+}

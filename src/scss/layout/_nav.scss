@@ -1,0 +1,114 @@
+// ==========================================================
+// EduTrack IT — Layout: Navigation
+// ==========================================================
+@use '../abstracts' as *;
+
+.main-nav {
+  display: none;
+  margin-right: auto;
+
+  @include media-up(md) {
+    display: flex;
+  }
+
+  &__list {
+    @include flex(row, flex-start, center, rem(28));
+
+    list-style: none;
+  }
+
+  &__link {
+    @include transition(color);
+
+    position: relative;
+    padding-block: rem(8);
+    font-size: rem(15);
+    font-weight: $font-weight-medium;
+    color: $color-text-muted;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    &--active {
+      color: $color-accent;
+      font-weight: $font-weight-semibold;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: rem(2);
+        background-color: $color-accent;
+        border-radius: rem(1);
+      }
+    }
+  }
+}
+
+.nav-toggle {
+  @include flex(flex, center, center);
+
+  flex-direction: column;
+  gap: rem(5);
+  width: rem(44);
+  height: rem(44);
+  padding: rem(8);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background: transparent;
+  cursor: pointer;
+
+  @include media-up(md) {
+    display: none;
+  }
+
+  &:hover {
+    background-color: tint($color-surface, 60%);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-focus-ring;
+    outline-offset: 2px;
+  }
+
+  &__bar {
+    display: block;
+    width: rem(20);
+    height: rem(2);
+    border-radius: rem(2);
+    background-color: $color-text;
+  }
+}
+
+.mobile-menu {
+  border-top: 1px solid $color-border;
+  background-color: $color-surface-alt;
+  padding: rem(16) rem(20);
+
+  @include media-up(md) {
+    display: none !important;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li + li {
+    border-top: 1px solid tint($color-border, 60%);
+  }
+
+  a {
+    display: block;
+    padding-block: rem(12);
+    font-size: rem(16);
+    font-weight: $font-weight-medium;
+    color: $color-text;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+// ==========================================================
+// EduTrack IT — Components: Badge
+// ==========================================================
+@use '../abstracts' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: rem(3) rem(8);
+  border-radius: $radius-sm;
+  background-color: tint($color-accent, 88%);
+  color: $color-accent;
+  font-size: rem(12);
+  font-weight: $font-weight-medium;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+
+  &--secondary {
+    background-color: tint($color-text-muted, 85%);
+    color: $color-text-muted;
+  }
+}

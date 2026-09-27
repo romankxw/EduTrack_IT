@@ -1,0 +1,45 @@
+// ==========================================================
+// EduTrack IT — Components: Breadcrumb
+// ==========================================================
+@use '../abstracts' as *;
+
+.breadcrumb {
+  display: none;
+
+  @include media-up(md) {
+    display: block;
+    padding-block: rem(20) rem(12);
+  }
+
+  ol {
+    @include flex(row, flex-start, center);
+
+    flex-wrap: wrap;
+    gap: rem(4) rem(8);
+    font-size: rem(13);
+    color: $color-text-muted;
+  }
+
+  li {
+    @include flex(inline-flex, flex-start, center);
+
+    + li::before {
+      content: '/';
+      margin-right: rem(8);
+      color: tint($color-text-muted, 40%);
+    }
+
+    &[aria-current='page'] {
+      color: $color-text;
+      font-weight: $font-weight-medium;
+    }
+  }
+
+  a {
+    color: $color-text-muted;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}

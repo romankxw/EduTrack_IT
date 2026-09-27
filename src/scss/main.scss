@@ -1,0 +1,11 @@
+// ==========================================================
+// EduTrack IT — Master Stylesheet (Architecture 7-1)
+// Contains strictly @use statements — no direct CSS rules
+// ==========================================================
+@use 'abstracts';
+@use 'base';
+@use 'components';
+@use 'layout';
+@use 'pages';
+@use 'themes';
+@use 'vendors';

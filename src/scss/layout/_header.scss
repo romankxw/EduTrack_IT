@@ -1,0 +1,50 @@
+// ==========================================================
+// EduTrack IT — Layout: Header
+// ==========================================================
+@use '../abstracts' as *;
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid $color-border;
+  background-color: rgb(255 255 255 / 95%);
+  backdrop-filter: blur(8px);
+
+  &__inner {
+    @include container;
+    @include flex(row, space-between, center, rem(16));
+
+    min-height: rem(64);
+
+    @include media-up(md) {
+      min-height: rem(76);
+      gap: rem(32);
+    }
+  }
+
+  &__logo,
+  .logo {
+    @include flex(inline-flex, flex-start, center);
+
+    font-family: $font-heading;
+    font-size: rem(22);
+    font-weight: 700;
+    color: $color-accent;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    transition: opacity 0.18s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  .btn {
+    display: none;
+
+    @include media-up(md) {
+      display: inline-flex;
+    }
+  }
+}

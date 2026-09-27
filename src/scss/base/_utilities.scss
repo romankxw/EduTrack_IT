@@ -1,0 +1,35 @@
+// ==========================================================
+// EduTrack IT — Base: Utility Classes (Additional Requirement)
+// ==========================================================
+@use '../abstracts' as *;
+
+// Spacing utility classes generated from $space map
+@each $key, $value in $space {
+  .mt-#{$key} {
+    margin-top: $value !important;
+  }
+
+  .mb-#{$key} {
+    margin-bottom: $value !important;
+  }
+
+  .p-#{$key} {
+    padding: $value !important;
+  }
+}
+
+// Visibility utilities
+.is-hidden {
+  display: none !important;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

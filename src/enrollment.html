@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="enrollment.pageTitle">Enroll — Full-Stack Modern JavaScript &amp; React Pro — EduTrack IT</title>
   <meta name="description" content="Complete your enrollment in Full-Stack Modern JavaScript and React Pro.">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="scss/main.scss">
 </head>
 <body>
 
@@ -14,22 +14,31 @@
   <main id="main">
     <div class="container">
 
-      <!-- Two-column: form + order summary -->
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol role="list">
+          <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
+          <li><a href="courses.html" data-i18n="breadcrumb.courses">Courses</a></li>
+          <li><a href="course-details.html" data-i18n="breadcrumb.courseDetail">Course Details</a></li>
+          <li aria-current="page" data-i18n="breadcrumb.enrollment">Enrollment</li>
+        </ol>
+      </nav>
+
+      <!-- Centered enrollment form card matching Figma -->
       <div class="enrollment-layout">
 
-        <!-- Breadcrumb -->
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <ol role="list">
-            <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
-            <li><a href="courses.html" data-i18n="breadcrumb.courses">Courses</a></li>
-            <li><a href="course-details.html" data-i18n="breadcrumb.courseDetail">Course Details</a></li>
-            <li aria-current="page" data-i18n="breadcrumb.enrollment">Enrollment</li>
-          </ol>
-        </nav>
+        <section class="enrollment-card" aria-labelledby="enroll-heading">
+          <h1 id="enroll-heading" class="enrollment-card__title" data-i18n="enrollment.title">Complete Your Enrollment</h1>
+          <p class="enrollment-card__subtitle">Confirm your registration details to start the program.</p>
 
-        <!-- Enrollment form -->
-        <section aria-labelledby="enroll-heading">
-          <h1 id="enroll-heading" data-i18n="enrollment.title">Complete Your Enrollment</h1>
+          <!-- Course summary banner from Figma -->
+          <div class="enrollment-summary">
+            <div class="enrollment-summary__content">
+              <strong class="enrollment-summary__title">Full-Stack Modern JavaScript &amp; React Pro</strong>
+              <span class="enrollment-summary__meta">Starts Monday &bull; 12 Weeks intensive</span>
+            </div>
+            <div class="enrollment-summary__price">$199</div>
+          </div>
 
           <form id="enrollment-form" method="get" action="index.html">
 
@@ -219,6 +228,7 @@
             </button>
 
           </form>
+        </section><!-- /.enrollment-card -->
       </div><!-- /.enrollment-layout -->
 
     </div><!-- /.container -->

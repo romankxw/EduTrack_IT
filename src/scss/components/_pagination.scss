@@ -1,0 +1,52 @@
+// ==========================================================
+// EduTrack IT — Components: Pagination
+// ==========================================================
+@use '../abstracts' as *;
+
+.pagination {
+  @include flex(row, center, center, rem(8));
+
+  margin-top: rem(32);
+
+  &__list {
+    @include flex(row, center, center, rem(6));
+
+    list-style: none;
+  }
+
+  &__link {
+    @include flex(inline-flex, center, center);
+    @include transition(background-color, color, border-color);
+
+    min-width: rem(40);
+    height: rem(40);
+    padding: rem(6) rem(12);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-surface-alt;
+    color: $color-text;
+    font-size: rem(14);
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-surface;
+      border-color: $color-border-hover;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-focus-ring;
+      outline-offset: 2px;
+    }
+
+    &--active {
+      background-color: $color-accent;
+      border-color: $color-accent;
+      color: $color-surface-alt;
+
+      &:hover {
+        background-color: shade($color-accent, 10%);
+      }
+    }
+  }
+}

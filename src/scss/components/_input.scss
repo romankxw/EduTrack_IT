@@ -1,0 +1,107 @@
+// ==========================================================
+// EduTrack IT — Components: Form & Inputs
+// ==========================================================
+@use '../abstracts' as *;
+
+.form-group {
+  margin-bottom: rem(20);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(16);
+
+  @include media-up(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.form-label {
+  display: block;
+  margin-bottom: rem(6);
+  font-size: rem(14);
+  font-weight: $font-weight-medium;
+  color: $color-text;
+
+  &--checkbox {
+    @include flex(row, flex-start, flex-start, rem(8));
+
+    font-size: rem(14);
+    cursor: pointer;
+    user-select: none;
+
+    input[type='checkbox'] {
+      margin-top: rem(3);
+    }
+  }
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  @include transition(border-color, box-shadow);
+
+  display: block;
+  width: 100%;
+  min-height: rem(44);
+  padding: rem(10) rem(14);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background-color: $color-surface-alt;
+  color: $color-text;
+  font-family: inherit;
+  font-size: rem(15);
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+
+  &:hover {
+    border-color: $color-border-hover;
+  }
+
+  &:focus-visible {
+    border-color: $color-focus-ring;
+    outline: 2px solid $color-focus-ring;
+    outline-offset: 1px;
+  }
+
+  &:disabled {
+    background-color: tint($color-surface, 60%);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.form-fieldset {
+  margin-bottom: rem(24);
+  padding: rem(24);
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background-color: $color-surface-alt;
+
+  &__legend {
+    padding-inline: rem(8);
+    font-size: rem(17);
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+  }
+}
+
+.filter-label {
+  @include flex(row, flex-start, center, rem(8));
+
+  font-size: rem(14);
+  color: $color-text;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover {
+    color: $color-accent;
+  }
+}

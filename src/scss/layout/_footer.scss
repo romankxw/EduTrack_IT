@@ -1,0 +1,14 @@
+// ==========================================================
+// EduTrack IT — Layout: Footer
+// ==========================================================
+@use '../abstracts' as *;
+
+.site-footer {
+  margin-top: auto;
+  padding-block: rem(32);
+  border-top: 1px solid $color-border;
+  background-color: $color-surface-alt;
+  text-align: center;
+  font-size: rem(14);
+  color: $color-text-muted;
+}

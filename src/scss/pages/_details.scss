@@ -1,0 +1,234 @@
+// ==========================================================
+// EduTrack IT — Pages: Course Details (Matches Figma Design)
+// ==========================================================
+@use '../abstracts' as *;
+
+.course-details {
+  &__thumbnail {
+    margin-bottom: rem(28);
+    width: 100%;
+    overflow: hidden;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-sm;
+
+    picture {
+      display: block;
+      width: 100%;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+  }
+
+  &__badge {
+    margin-bottom: rem(12);
+  }
+
+  &__title {
+    @include text-style(rem(26), 1.25, $font-weight-bold);
+
+    margin-block: rem(14) rem(20);
+    color: $color-text;
+
+    @include media-up(md) {
+      font-size: rem(34);
+    }
+  }
+
+  &__desc {
+    margin-bottom: rem(24);
+    font-size: rem(16);
+    line-height: 1.75;
+    color: $color-text;
+  }
+
+  // Generous spacing for content sections (About, What you'll learn, etc.)
+  section {
+    margin-top: rem(40);
+    margin-bottom: rem(40);
+
+    h2 {
+      margin-bottom: rem(18);
+      font-size: rem(22);
+      font-weight: $font-weight-bold;
+      color: $color-text;
+    }
+
+    p {
+      margin-bottom: rem(18);
+      font-size: rem(16);
+      line-height: 1.75;
+      color: tint($color-text, 8%);
+    }
+
+    ul {
+      margin-top: rem(12);
+      margin-bottom: rem(18);
+      padding-left: rem(20);
+
+      li {
+        margin-bottom: rem(8);
+        font-size: rem(15);
+        line-height: 1.7;
+        color: $color-text;
+        list-style-type: disc;
+      }
+    }
+  }
+}
+
+// 4-stat metric cards with clear spacing before About section
+.course-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: rem(12);
+  margin-top: rem(24);
+  margin-bottom: rem(44);
+  padding: 0;
+  list-style: none;
+
+  @include media-up(md) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: rem(16);
+  }
+
+  li {
+    @include flex(column, center, flex-start, rem(4));
+
+    padding: rem(14) rem(16);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-surface-alt;
+    box-shadow: $shadow-sm;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+
+    &:hover {
+      border-color: $color-border-hover;
+      transform: translateY(rem(-2));
+    }
+
+    strong {
+      font-size: rem(12);
+      font-weight: $font-weight-medium;
+      color: $color-text-muted;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    span {
+      font-size: rem(15);
+      font-weight: $font-weight-semibold;
+      color: $color-text;
+    }
+  }
+}
+
+// Curriculum modules: symmetrical padding, clean compact design matching Figma
+.curriculum {
+  list-style: none;
+  padding: 0;
+  margin-top: rem(16);
+
+  &__week {
+    padding: rem(14) rem(20);
+    margin-bottom: rem(12);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-surface-alt;
+    box-shadow: $shadow-sm;
+    transition: border-color 0.18s ease;
+
+    &:hover {
+      border-color: $color-border-hover;
+    }
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: rem(4);
+      font-size: rem(15);
+      font-weight: $font-weight-semibold;
+      color: $color-text;
+      line-height: 1.3;
+    }
+
+    p {
+      margin: 0 !important;
+      font-size: rem(14);
+      line-height: 1.45;
+      color: $color-text-muted;
+    }
+  }
+}
+
+// Enroll sidebar card with discount & features
+.enroll-card {
+  padding: rem(28);
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background-color: $color-surface-alt;
+  box-shadow: $shadow-md;
+
+  @include media-up(lg) {
+    position: sticky;
+    top: rem(96);
+  }
+
+  &__price-wrap {
+    @include flex(row, flex-start, baseline, rem(12));
+
+    margin-bottom: rem(18);
+  }
+
+  &__price {
+    font-size: rem(32);
+    font-weight: $font-weight-bold;
+    color: $color-text;
+    line-height: 1;
+  }
+
+  &__original-price {
+    font-size: rem(16);
+    color: $color-text-muted;
+    text-decoration: line-through;
+  }
+
+  &__features-title {
+    margin-top: rem(24);
+    margin-bottom: rem(12);
+    font-size: rem(15);
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+  }
+
+  &__features-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      @include flex(row, flex-start, center, rem(10));
+
+      margin-bottom: rem(10);
+      font-size: rem(14);
+      line-height: 1.5;
+      color: tint($color-text, 15%);
+
+      span {
+        color: $color-accent;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  &__guarantee {
+    margin-top: rem(16);
+    text-align: center;
+    font-size: rem(13);
+    color: $color-text-muted;
+  }
+}

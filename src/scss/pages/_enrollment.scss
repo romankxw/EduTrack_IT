@@ -1,0 +1,163 @@
+// ==========================================================
+// EduTrack IT — Pages: Enrollment (Matches Figma Design)
+// ==========================================================
+@use '../abstracts' as *;
+
+.enrollment-page {
+  padding-block: rem(32);
+}
+
+.enrollment-card {
+  padding: rem(24);
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  background-color: $color-surface-alt;
+  box-shadow: $shadow-md;
+
+  @include media-up(md) {
+    padding: rem(40);
+  }
+
+  &__title {
+    @include text-style(rem(24), 1.25, $font-weight-bold);
+
+    margin-bottom: rem(8);
+    color: $color-text;
+
+    @include media-up(md) {
+      font-size: rem(28);
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: rem(24);
+    font-size: rem(15);
+    line-height: 1.5;
+    color: $color-text-muted;
+  }
+
+  fieldset {
+    margin-bottom: rem(24);
+    padding: rem(20);
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: tint($color-surface, 60%);
+
+    legend {
+      padding-inline: rem(8);
+      font-size: rem(15);
+      font-weight: $font-weight-semibold;
+      color: $color-text;
+    }
+  }
+
+  .form-group {
+    margin-bottom: rem(18);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: rem(6);
+      font-size: rem(14);
+      font-weight: $font-weight-medium;
+      color: $color-text;
+    }
+
+    input[type='text'],
+    input[type='email'],
+    input[type='tel'],
+    input[type='password'] {
+      @include transition(border-color, box-shadow);
+
+      display: block;
+      width: 100%;
+      min-height: rem(44);
+      padding: rem(10) rem(14);
+      border: 1px solid $color-border;
+      border-radius: $radius-md;
+      background-color: $color-surface-alt;
+      color: $color-text;
+      font-family: inherit;
+      font-size: rem(15);
+
+      &:hover {
+        border-color: $color-border-hover;
+      }
+
+      &:focus-visible {
+        border-color: $color-focus-ring;
+        outline: 2px solid $color-focus-ring;
+        outline-offset: 1px;
+      }
+    }
+
+    small {
+      display: block;
+      margin-top: rem(4);
+      font-size: rem(12);
+      color: $color-text-muted;
+    }
+  }
+
+  .form-label--checkbox {
+    @include flex(row, flex-start, flex-start, rem(10));
+
+    margin-top: rem(16);
+    margin-bottom: rem(24);
+    font-size: rem(14);
+    line-height: 1.5;
+    color: $color-text;
+    cursor: pointer;
+
+    input[type='checkbox'] {
+      margin-top: rem(3);
+      accent-color: $color-accent;
+    }
+
+    a {
+      color: $color-accent;
+      text-decoration: underline;
+
+      &:hover {
+        color: shade($color-accent, 15%);
+      }
+    }
+  }
+}
+
+// Course summary banner (directly from Figma Desktop / Enrollment)
+.enrollment-summary {
+  @include flex(row, space-between, center, rem(16));
+
+  padding: rem(16) rem(20);
+  margin-bottom: rem(28);
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  background-color: $color-surface;
+
+  &__content {
+    flex: 1;
+  }
+
+  &__title {
+    display: block;
+    margin-bottom: rem(4);
+    font-size: rem(15);
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+  }
+
+  &__meta {
+    font-size: rem(13);
+    color: $color-text-muted;
+  }
+
+  &__price {
+    font-size: rem(24);
+    font-weight: $font-weight-bold;
+    color: $color-accent;
+  }
+}

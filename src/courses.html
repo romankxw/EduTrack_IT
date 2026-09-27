@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title data-i18n="courses.pageTitle">Courses — EduTrack IT</title>
   <meta name="description" content="Browse all production-focused IT courses. Filter by domain and experience level.">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="scss/main.scss">
 </head>
 <body>
 
@@ -21,20 +21,6 @@
           Production-focused tracks designed by senior engineers.
         </p>
       </section>
-
-      <!-- Search -->
-      <div class="search-bar">
-        <label for="course-search" data-i18n="courses.searchLabel">Search courses</label>
-        <input
-          id="course-search"
-          type="search"
-          name="q"
-          autocomplete="off"
-          placeholder="Search courses…"
-          data-i18n-placeholder="courses.searchPlaceholder"
-          aria-controls="courses-list"
-        >
-      </div>
 
       <!-- Two-column layout: aside filters + course grid -->
       <div class="catalog-layout">
@@ -101,8 +87,43 @@
         </aside>
 
         <!-- Course list -->
-        <section>
+        <section class="catalog-content">
           <h2 class="visually-hidden" data-i18n="courses.listHeading">Course list</h2>
+
+          <!-- Catalog toolbar: search input + count matching Figma -->
+          <div class="catalog-toolbar">
+            <div class="catalog-toolbar__search">
+              <label for="course-search" class="visually-hidden" data-i18n="courses.searchLabel">Search courses</label>
+              <input
+                id="course-search"
+                type="search"
+                name="q"
+                autocomplete="off"
+                placeholder="Search courses…"
+                data-i18n-placeholder="courses.searchPlaceholder"
+                aria-controls="courses-list"
+              >
+            </div>
+            <span class="catalog-toolbar__count">Showing <%= courses.length %> of 38 courses</span>
+          </div>
+
+          <!-- Mobile filter & sort buttons (replaces desktop filter sidebar on mobile) -->
+          <div class="catalog-mobile-actions">
+            <button type="button" class="btn btn--secondary catalog-mobile-actions__btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+              <span>Filters</span>
+            </button>
+            <button type="button" class="btn btn--secondary catalog-mobile-actions__btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="4" y1="6" x2="20" y2="6"></line>
+                <line x1="7" y1="12" x2="17" y2="12"></line>
+                <line x1="10" y1="18" x2="14" y2="18"></line>
+              </svg>
+              <span>Sort</span>
+            </button>
+          </div>
 
           <ul id="courses-list" class="course-grid" role="list" aria-live="polite">
             <% courses.forEach(function(course) { %>
