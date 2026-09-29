@@ -6,6 +6,11 @@
   <title data-i18n="home.pageTitle">EduTrack IT — Master Modern IT Skills</title>
   <meta name="description" content="Accredited online IT courses catalog. Master modern IT skills with industry mentors.">
   <link rel="stylesheet" href="scss/main.scss">
+  <script>
+    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
+      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+    }
+  </script>
 
   <!-- schema.org — WebSite -->
   <script type="application/ld+json">

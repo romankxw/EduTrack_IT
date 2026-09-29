@@ -120,6 +120,17 @@ export class ItemService {
       return cached;
     }
 
+    const isStaticHost = typeof window !== 'undefined' &&
+      (window.location.hostname.includes('github.io') || window.location.protocol === 'file:');
+
+    if (isStaticHost) {
+      const fallbackResult = await this.fallbackGetList({ q, level, domain, sort, order, page, limit });
+      if (fallbackResult) {
+        this.cache?.set(cacheKey, fallbackResult);
+        return fallbackResult;
+      }
+    }
+
     try {
       const response = await this.client.get(`/${this.resource}`, { params });
 
@@ -219,6 +230,26 @@ export class ItemService {
   }
 
   async getById(id) {
+    const isStaticHost = typeof window !== 'undefined' &&
+      (window.location.hostname.includes('github.io') || window.location.protocol === 'file:');
+
+    if (isStaticHost) {
+      try {
+        const res = await fetch('./db.json');
+        if (res.ok) {
+          const dbData = await res.json();
+          const course = dbData.courses.find((c) => String(c.id) === String(id) || c.slug === id);
+          if (course) {
+            course.instructor = dbData.instructors?.find((i) => i.id === course.instructorId);
+            course.reviews = dbData.reviews?.filter((r) => String(r.courseId) === String(course.id)) || [];
+            return course;
+          }
+        }
+      } catch {
+        // Fallback error
+      }
+    }
+
     try {
       const { data } = await this.client.get(`/${this.resource}/${id}`, {
         params: { _expand: 'instructor', _embed: 'reviews' },

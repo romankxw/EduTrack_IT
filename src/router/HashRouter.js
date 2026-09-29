@@ -11,13 +11,13 @@ export class HashRouter {
   }
 
   resolve() {
-    const rawHash = window.location.hash.slice(1);
-    // If no hash is set on the page, don't hijack standard page render unless requested
-    if (!rawHash && !window.location.hash.startsWith('#/')) {
+    // Only handle routes that explicitly start with '#/' (e.g. '#/list', '#/item/1')
+    // Standard in-page anchors (e.g. '#main') or empty hash should never trigger router 404
+    if (!window.location.hash.startsWith('#/')) {
       return;
     }
 
-    const path = rawHash || '/list';
+    const path = window.location.hash.slice(1);
     for (const route of this.routes) {
       const match = path.match(route.pattern);
       if (match) {
