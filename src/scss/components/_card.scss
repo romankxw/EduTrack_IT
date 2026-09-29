@@ -7,6 +7,9 @@
   @include flex(column, flex-start, stretch);
   @include transition(transform, box-shadow, border-color);
 
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   height: 100%;
   border: 1px solid $color-border;
   border-radius: $radius-lg;
@@ -54,7 +57,12 @@
     @include flex(column, flex-start, stretch);
 
     flex: 1;
-    padding: rem(20);
+    min-width: 0;
+    padding: rem(16);
+
+    @include media-up(md) {
+      padding: rem(20);
+    }
   }
 
   &__category {
@@ -62,11 +70,16 @@
   }
 
   &__title {
-    @include text-style(rem(18), 1.35, $font-weight-semibold);
+    @include text-style(rem(16), 1.35, $font-weight-semibold);
 
     margin-bottom: rem(12);
     color: $color-text;
+    overflow-wrap: break-word;
     transition: color 0.18s ease;
+
+    @include media-up(md) {
+      font-size: rem(18);
+    }
 
     &:hover {
       color: $color-accent;
@@ -96,16 +109,82 @@
 
   // Only single border divider in card: between meta and footer
   &__footer {
-    @include flex(row, space-between, center);
+    @include flex(row, space-between, center, rem(8));
 
-    padding: rem(16) rem(20);
+    min-width: 0;
+    padding: rem(12) rem(16);
     border-top: 1px solid tint($color-border, 60%);
     background-color: $color-surface-alt;
+
+    @include media-up(md) {
+      padding: rem(16) rem(20);
+    }
   }
 
   &__price {
-    @include text-style(rem(22), 1.2, $font-weight-bold);
+    @include text-style(rem(20), 1.2, $font-weight-bold);
 
     color: $color-text;
+    flex-shrink: 0;
+
+    @include media-up(md) {
+      font-size: rem(22);
+    }
   }
+
+  &__like,
+  .card__like {
+    @include flex(inline-flex, center, center, rem(6));
+    @include transition(color, background-color, border-color, transform);
+
+    padding: rem(6) rem(12);
+    font-size: rem(13);
+    font-weight: $font-weight-medium;
+    color: $color-text-muted;
+    background-color: transparent;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      color: #e11d48;
+      border-color: #fda4af;
+      background-color: #fff1f2;
+      transform: scale(1.04);
+    }
+
+    &--active,
+    &.is-liked {
+      color: #e11d48;
+      background-color: #fff1f2;
+      border-color: #fda4af;
+      font-weight: $font-weight-bold;
+
+      &:hover:not(:disabled) {
+        background-color: #ffe4e6;
+        border-color: #fb7185;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+  }
+}
+
+// Skeleton loading placeholder
+.card--skeleton,
+.course-card--skeleton {
+  min-height: rem(380);
+  border-radius: $radius-lg;
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border: 1px solid $color-border;
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }

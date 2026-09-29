@@ -19,7 +19,7 @@
         <ol role="list">
           <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
           <li><a href="courses.html" data-i18n="breadcrumb.courses">Courses</a></li>
-          <li><a href="course-details.html" data-i18n="breadcrumb.courseDetail">Course Details</a></li>
+          <li><a href="course-details.html" id="breadcrumb-course-link" data-i18n="breadcrumb.courseDetail">Course Details</a></li>
           <li aria-current="page" data-i18n="breadcrumb.enrollment">Enrollment</li>
         </ol>
       </nav>
@@ -34,10 +34,10 @@
           <!-- Course summary banner from Figma -->
           <div class="enrollment-summary">
             <div class="enrollment-summary__content">
-              <strong class="enrollment-summary__title">Full-Stack Modern JavaScript &amp; React Pro</strong>
-              <span class="enrollment-summary__meta">Starts Monday &bull; 12 Weeks intensive</span>
+              <strong class="enrollment-summary__title" id="enrollment-course-title">Full-Stack Modern JavaScript &amp; React Pro</strong>
+              <span class="enrollment-summary__meta" id="enrollment-course-meta">Starts Monday &bull; 12 Weeks intensive</span>
             </div>
-            <div class="enrollment-summary__price">$199</div>
+            <div class="enrollment-summary__price" id="enrollment-course-price">$199</div>
           </div>
 
           <form id="enrollment-form" method="get" action="index.html">
@@ -62,9 +62,11 @@
                   pattern="^[A-Za-z\s\-]+$"
                   title="Only letters, spaces, and hyphens allowed"
                   aria-required="true"
+                  aria-describedby="full-name-error"
                   placeholder="Jane Smith"
                   data-i18n-placeholder="enrollment.fullNamePlaceholder"
                 >
+                <span data-error-for="full_name" id="full-name-error" role="alert"></span>
               </div>
 
               <div class="form-group">
@@ -83,9 +85,7 @@
                   placeholder="jane@example.com"
                   data-i18n-placeholder="enrollment.emailPlaceholder"
                 >
-                <span id="email-error" role="alert" hidden data-i18n="enrollment.emailError">
-                  Please enter a valid email address.
-                </span>
+                <span data-error-for="email" id="email-error" role="alert"></span>
               </div>
 
               <div class="form-group">
@@ -124,13 +124,14 @@
                   minlength="8"
                   maxlength="72"
                   aria-required="true"
-                  aria-describedby="password-hint"
+                  aria-describedby="password-hint password-error"
                   placeholder="At least 8 characters"
                   data-i18n-placeholder="enrollment.passwordPlaceholder"
                 >
                 <small id="password-hint" data-i18n="enrollment.passwordHint">
                   Must be at least 8 characters.
                 </small>
+                <span data-error-for="password" id="password-error" role="alert"></span>
               </div>
 
             </fieldset>
@@ -156,8 +157,10 @@
                   pattern="[0-9\s]+"
                   title="Only digits and spaces allowed"
                   aria-required="true"
+                  aria-describedby="card-number-error"
                   placeholder="1234 5678 9012 3456"
                 >
+                <span data-error-for="cc_number" id="card-number-error" role="alert"></span>
               </div>
 
               <div class="form-row">
@@ -177,8 +180,10 @@
                     title="Format MM/YY"
                     maxlength="5"
                     aria-required="true"
+                    aria-describedby="card-expiry-error"
                     placeholder="MM/YY"
                   >
+                  <span data-error-for="cc_exp" id="card-expiry-error" role="alert"></span>
                 </div>
                 <div class="form-group">
                   <label for="card-cvc">
@@ -196,8 +201,10 @@
                     title="3 or 4 digits"
                     maxlength="4"
                     aria-required="true"
+                    aria-describedby="card-cvc-error"
                     placeholder="123"
                   >
+                  <span data-error-for="cc_csc" id="card-cvc-error" role="alert"></span>
                 </div>
               </div>
 
@@ -218,14 +225,14 @@
                   and <a href="#">Privacy Policy</a>
                 </span>
               </label>
-              <span id="terms-error" role="alert" hidden data-i18n="enrollment.termsError">
-                You must accept the terms to continue.
-              </span>
+              <span data-error-for="agree_terms" id="terms-error" role="alert"></span>
             </div>
 
-            <button type="submit" class="btn btn--primary btn--full" data-i18n="enrollment.submit">
+            <button id="enrollment-submit-btn" type="submit" class="btn btn--primary btn--full" data-i18n="enrollment.submit">
               Pay $199 &amp; Enroll Now
             </button>
+
+            <div id="enrollment-status" class="form-status" role="status" aria-live="polite"></div>
 
           </form>
         </section><!-- /.enrollment-card -->
@@ -237,5 +244,6 @@
   <%- include('partials/footer') %>
 
   <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/enrollment.js"></script>
 </body>
 </html>

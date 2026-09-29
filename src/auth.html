@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In &bull; Registration — EduTrack IT</title>
+  <meta name="description" content="Sign in to your EduTrack IT account or create a new student profile to access industry-grade IT courses.">
+  <link rel="stylesheet" href="scss/main.scss">
+</head>
+<body>
+  <%- include('partials/header', { active: '' }) %>
+
+  <main id="main">
+    <div class="container">
+      <div class="auth-layout">
+        <div class="auth-card">
+          <div class="auth-card__header">
+            <h1 class="auth-card__title">Welcome to EduTrack</h1>
+            <p class="auth-card__subtitle">Access your enrolled courses and track your progress</p>
+
+            <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+              <button
+                type="button"
+                id="tab-signin"
+                class="auth-tabs__btn auth-tabs__btn--active"
+                role="tab"
+                aria-selected="true"
+                aria-controls="panel-signin"
+              >
+                Sign In
+              </button>
+              <button
+                type="button"
+                id="tab-register"
+                class="auth-tabs__btn"
+                role="tab"
+                aria-selected="false"
+                aria-controls="panel-register"
+              >
+                Create Account
+              </button>
+            </div>
+          </div>
+
+          <div id="auth-status" class="form-status" role="status" aria-live="polite"></div>
+
+          <!-- Sign In Panel -->
+          <div id="panel-signin" class="auth-panel" role="tabpanel" aria-labelledby="tab-signin">
+            <form id="signin-form" class="auth-form" novalidate>
+              <div class="form-group">
+                <label for="signin-email" class="form-label">Email Address <span class="required" aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="signin-email"
+                  name="email"
+                  class="form-input"
+                  required
+                  autocomplete="email"
+                  placeholder="name@example.com"
+                >
+                <span class="form-error" data-error-for="signin-email" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="signin-password" class="form-label">Password <span class="required" aria-hidden="true">*</span></label>
+                <input
+                  type="password"
+                  id="signin-password"
+                  name="password"
+                  class="form-input"
+                  required
+                  autocomplete="current-password"
+                  placeholder="••••••••"
+                >
+                <span class="form-error" data-error-for="signin-password" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group form-group--checkbox">
+                <label class="form-checkbox">
+                  <input type="checkbox" name="remember" id="signin-remember" checked>
+                  <span>Remember me on this device</span>
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full">Sign In</button>
+            </form>
+          </div>
+
+          <!-- Register Panel -->
+          <div id="panel-register" class="auth-panel" role="tabpanel" aria-labelledby="tab-register" hidden>
+            <form id="register-form" class="auth-form" novalidate>
+              <div class="form-group">
+                <label for="reg-name" class="form-label">Full Name <span class="required" aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="reg-name"
+                  name="name"
+                  class="form-input"
+                  required
+                  minlength="2"
+                  autocomplete="name"
+                  placeholder="Jane Doe"
+                >
+                <span class="form-error" data-error-for="reg-name" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-email" class="form-label">Email Address <span class="required" aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="reg-email"
+                  name="email"
+                  class="form-input"
+                  required
+                  autocomplete="email"
+                  placeholder="name@example.com"
+                >
+                <span class="form-error" data-error-for="reg-email" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="reg-password" class="form-label">Password <span class="required" aria-hidden="true">*</span></label>
+                <input
+                  type="password"
+                  id="reg-password"
+                  name="password"
+                  class="form-input"
+                  required
+                  minlength="8"
+                  autocomplete="new-password"
+                  placeholder="Minimum 8 characters"
+                >
+                <span class="form-error" data-error-for="reg-password" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group form-group--checkbox">
+                <label class="form-checkbox">
+                  <input type="checkbox" name="terms" id="reg-terms" required>
+                  <span>I agree to the Terms of Service &amp; Privacy Policy</span>
+                </label>
+                <span class="form-error" data-error-for="reg-terms" aria-live="polite"></span>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--full">Create Free Account</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('partials/footer') %>
+
+  <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

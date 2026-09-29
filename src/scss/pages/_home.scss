@@ -118,6 +118,14 @@
     margin-bottom: rem(32);
   }
 
+  .course-grid {
+    grid-template-columns: 1fr;
+
+    @include media-up(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
   &__more {
     margin-top: rem(36);
     text-align: center;

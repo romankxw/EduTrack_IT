@@ -26,8 +26,12 @@
       <div class="catalog-layout">
 
         <!-- Filters sidebar -->
-        <aside class="filters" aria-label="Course filters" data-i18n-aria-label="courses.filtersLabel">
-          <form>
+        <aside id="catalog-filters" class="filters" aria-label="Course filters" data-i18n-aria-label="courses.filtersLabel">
+          <div class="filters__header">
+            <h3 class="filters__heading">Filters</h3>
+            <button type="button" id="filters-close-btn" class="filters__close-btn" aria-label="Close filters">&times;</button>
+          </div>
+          <form id="catalog-filters-form">
 
             <fieldset class="filter-group">
               <legend class="filter-group__title" data-i18n="filters.domain">Domain</legend>
@@ -90,7 +94,7 @@
         <section class="catalog-content">
           <h2 class="visually-hidden" data-i18n="courses.listHeading">Course list</h2>
 
-          <!-- Catalog toolbar: search input + count matching Figma -->
+          <!-- Catalog toolbar: search input + sort + count matching Figma -->
           <div class="catalog-toolbar">
             <div class="catalog-toolbar__search">
               <label for="course-search" class="visually-hidden" data-i18n="courses.searchLabel">Search courses</label>
@@ -104,34 +108,78 @@
                 aria-controls="courses-list"
               >
             </div>
-            <span class="catalog-toolbar__count">Showing <%= courses.length %> of 38 courses</span>
+            <div class="catalog-toolbar__actions">
+              <div class="catalog-toolbar__sort">
+                <label for="course-sort" class="visually-hidden">Sort courses</label>
+                <select id="course-sort" name="sort" aria-label="Sort courses">
+                  <option value="publishedAt:desc">Newest First</option>
+                  <option value="price:asc">Price: Low to High</option>
+                  <option value="price:desc">Price: High to Low</option>
+                  <option value="rating:desc">Highest Rated</option>
+                </select>
+              </div>
+              <span class="catalog-toolbar__count" id="catalog-count">Showing <%= courses.length %> courses</span>
+            </div>
           </div>
 
           <!-- Mobile filter & sort buttons (replaces desktop filter sidebar on mobile) -->
           <div class="catalog-mobile-actions">
-            <button type="button" class="btn btn--secondary catalog-mobile-actions__btn">
+            <button
+              id="mobile-filters-btn"
+              type="button"
+              class="btn btn--secondary catalog-mobile-actions__btn"
+              aria-expanded="false"
+              aria-controls="catalog-filters"
+            >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
               </svg>
-              <span>Filters</span>
+              <span id="mobile-filters-label">Filters</span>
             </button>
-            <button type="button" class="btn btn--secondary catalog-mobile-actions__btn">
+            <button
+              id="mobile-sort-btn"
+              type="button"
+              class="btn btn--secondary catalog-mobile-actions__btn"
+              aria-expanded="false"
+              aria-controls="mobile-sort-menu"
+            >
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="4" y1="6" x2="20" y2="6"></line>
                 <line x1="7" y1="12" x2="17" y2="12"></line>
                 <line x1="10" y1="18" x2="14" y2="18"></line>
               </svg>
-              <span>Sort</span>
+              <span id="mobile-sort-label">Sort</span>
             </button>
           </div>
 
-          <ul id="courses-list" class="course-grid" role="list" aria-live="polite">
-            <% courses.forEach(function(course) { %>
-            <li>
-              <%- include('partials/course-card', { course }) %>
-            </li>
-            <% }); %>
-          </ul>
+          <!-- Mobile Sort Menu (toggleable) -->
+          <div id="mobile-sort-menu" class="mobile-sort-menu" role="region" aria-label="Sort options" hidden>
+            <span class="mobile-sort-menu__title">Sort Courses By:</span>
+            <button type="button" class="mobile-sort-menu__option mobile-sort-menu__option--active" data-sort-val="publishedAt:desc">
+              ✓ Newest First
+            </button>
+            <button type="button" class="mobile-sort-menu__option" data-sort-val="price:asc">
+              Price: Low to High
+            </button>
+            <button type="button" class="mobile-sort-menu__option" data-sort-val="price:desc">
+              Price: High to Low
+            </button>
+            <button type="button" class="mobile-sort-menu__option" data-sort-val="rating:desc">
+              Highest Rated
+            </button>
+          </div>
+
+          <div id="catalog-view-container">
+            <ul id="courses-list" class="course-grid" role="list" aria-live="polite">
+              <% courses.forEach(function(course) { %>
+              <li>
+                <%- include('partials/course-card', { course }) %>
+              </li>
+              <% }); %>
+            </ul>
+
+            <nav id="pagination" class="pagination" aria-label="Catalog pagination"></nav>
+          </div>
 
         </section>
 
@@ -143,5 +191,6 @@
   <%- include('partials/footer') %>
 
   <script type="module" src="js/nav.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>

@@ -49,7 +49,7 @@
         <ol role="list">
           <li><a href="index.html" data-i18n="breadcrumb.home">Home</a></li>
           <li><a href="courses.html" data-i18n="breadcrumb.courses">Courses</a></li>
-          <li aria-current="page">Full-Stack Modern JavaScript & React Pro</li>
+          <li aria-current="page" id="breadcrumb-title">Full-Stack Modern JavaScript & React Pro</li>
         </ol>
       </nav>
 
@@ -61,7 +61,7 @@
 
           <!-- Course hero image — art direction -->
           <div class="course-details__thumbnail">
-            <picture>
+            <picture id="course-picture">
               <source
                 media="(min-width: 768px)"
                 type="image/webp"
@@ -85,7 +85,7 @@
             </picture>
           </div>
 
-          <span class="badge" data-i18n="card.category.development">Development</span>
+          <span class="badge" id="course-category" data-i18n="card.category.development">Development</span>
 
           <h1 id="course-title" class="course-details__title">
             Full-Stack Modern JavaScript &amp; React Pro
@@ -95,15 +95,15 @@
           <ul class="course-stats" role="list" aria-label="Course statistics">
             <li>
               <strong data-i18n="courseDetail.duration">Duration:</strong>
-              <span>12 Weeks</span>
+              <span id="course-duration">12 Weeks</span>
             </li>
             <li>
               <strong data-i18n="courseDetail.level">Level:</strong>
-              <span data-i18n="courseDetail.intermediate">Intermediate</span>
+              <span id="course-level" data-i18n="courseDetail.intermediate">Intermediate</span>
             </li>
             <li>
               <strong data-i18n="courseDetail.rating">Rating:</strong>
-              <span aria-label="4.9 out of 5, 1200 reviews">&#9733; 4.9 (1.2k)</span>
+              <span id="course-rating" aria-label="4.9 out of 5, 1200 reviews">&#9733; 4.9 (1.2k)</span>
             </li>
             <li>
               <strong data-i18n="courseDetail.language">Language:</strong>
@@ -114,7 +114,7 @@
           <!-- About -->
           <section aria-labelledby="about-heading">
             <h2 id="about-heading" data-i18n="courseDetail.aboutTitle">About this course</h2>
-            <p>
+            <p id="course-description">
               A comprehensive, production-ready curriculum that takes you from JavaScript
               fundamentals to deploying full-stack React applications on the cloud. Designed
               by senior engineers with 10+ years of industry experience.
@@ -164,6 +164,19 @@
                 <p>Docker, CI/CD, cloud hosting, performance optimization, interview prep.</p>
               </li>
             </ol>
+          <!-- Student Reviews -->
+          <section id="course-reviews-section" class="course-reviews" aria-labelledby="reviews-heading">
+            <h2 id="reviews-heading">Student Reviews</h2>
+            <div id="course-reviews-list" class="course-reviews__list" role="list">
+              <article class="course-review" role="listitem">
+                <header class="course-review__header">
+                  <strong class="course-review__author">Ihor K.</strong>
+                  <span class="course-review__stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                  <time datetime="2026-03-01" class="course-review__date">Mar 1, 2026</time>
+                </header>
+                <p class="course-review__text">Clear, practical, and highly up to date. The mentor reviews were super valuable.</p>
+              </article>
+            </div>
           </section>
 
         </article>
@@ -171,11 +184,11 @@
         <!-- Enroll sidebar matching Figma -->
         <aside class="enroll-card" aria-label="Enrollment information">
           <div class="enroll-card__price-wrap">
-            <span class="enroll-card__price">$199</span>
-            <span class="enroll-card__original-price">$299</span>
+            <span class="enroll-card__price" id="course-price">$199</span>
+            <span class="enroll-card__original-price" id="course-original-price">$299</span>
           </div>
 
-          <a href="enrollment.html" class="btn btn--primary btn--full" data-i18n="enroll.cta">Enroll In Course</a>
+          <a href="enrollment.html" id="enroll-btn" class="btn btn--primary btn--full" data-i18n="enroll.cta">Enroll In Course</a>
 
           <h3 class="enroll-card__features-title">Course Features:</h3>
           <ul class="enroll-card__features-list" role="list">
@@ -196,5 +209,6 @@
   <%- include('partials/footer') %>
 
   <script type="module" src="js/nav.js"></script>
+  <script type="module" src="js/course-details.js"></script>
 </body>
 </html>

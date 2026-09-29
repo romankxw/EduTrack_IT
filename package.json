@@ -1,14 +1,22 @@
 {
   "name": "edutrack-it",
   "version": "1.0.0",
-  "description": "EduTrack IT — Online IT Courses Catalog. Lab 3: SCSS, Responsive Design, 7-1 Architecture.",
+  "description": "EduTrack IT — Online IT Courses Catalog. Lab 4: JS Interactivity, REST API (json-server), Classes, Caching, and Optimistic UI.",
+  "type": "module",
   "scripts": {
     "dev": "vite",
+    "api": "json-server --watch db.json --port 3001 --delay 300",
+    "start": "concurrently \"npm:api\" \"npm:dev\"",
     "build": "vite build",
     "preview": "vite preview",
+    "lint": "eslint src",
     "lint:css": "stylelint \"src/scss/**/*.scss\""
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.11.0",
+    "json-server": "^0.17.4",
     "sass": "^1.105.0",
     "stylelint": "^17.15.0",
     "stylelint-config-standard-scss": "^17.0.0",
@@ -18,5 +26,8 @@
   },
   "allowScripts": {
     "esbuild@0.25.12": true
+  },
+  "dependencies": {
+    "axios": "^1.20.0"
   }
 }

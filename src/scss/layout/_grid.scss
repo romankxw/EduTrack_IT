@@ -14,6 +14,8 @@
 .card-list {
   display: grid;
   grid-template-columns: 1fr;
+  width: 100%;
+  min-width: 0;
   gap: rem(16);
   list-style: none;
 
@@ -57,12 +59,14 @@
 .catalog-layout {
   display: grid;
   grid-template-columns: 1fr;
+  width: 100%;
+  min-width: 0;
   gap: rem(24);
   align-items: start;
   padding-bottom: rem(64);
 
   @include media-up(lg) {
-    grid-template-columns: rem(280) 1fr;
+    grid-template-columns: rem(280) minmax(0, 1fr);
     gap: rem(32);
   }
 
@@ -71,6 +75,11 @@
       grid-template-columns: repeat(2, 1fr);
     }
   }
+}
+
+.catalog-content {
+  width: 100%;
+  min-width: 0;
 }
 
 // ----------------------------------------------------------

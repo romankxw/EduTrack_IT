@@ -1,5 +1,9 @@
 <%# partials/course-card.ejs
-    Params: course — object from courses.json
+    Params: course — course object from db.json
+-%>
+<%
+  const imgKey = course.slug || course.imagePrefix || course.id;
+  const reviewsDisplay = course.reviewsCount || (typeof course.reviews === 'string' ? course.reviews : '500+');
 -%>
 <article class="course-card" aria-labelledby="course-<%= course.id %>">
 
@@ -8,12 +12,12 @@
     <picture>
       <source
         type="image/webp"
-        srcset="img/<%= course.id %>-380.webp 380w, img/<%= course.id %>-640.webp 640w"
+        srcset="img/<%= imgKey %>-380.webp 380w, img/<%= imgKey %>-640.webp 640w"
         sizes="(min-width: 1280px) 380px, (min-width: 768px) 45vw, 100vw"
       >
       <img
-        src="img/<%= course.id %>-380.jpg"
-        srcset="img/<%= course.id %>-380.jpg 380w, img/<%= course.id %>-640.jpg 640w"
+        src="img/<%= imgKey %>-380.jpg"
+        srcset="img/<%= imgKey %>-380.jpg 380w, img/<%= imgKey %>-640.jpg 640w"
         sizes="(min-width: 1280px) 380px, (min-width: 768px) 45vw, 100vw"
         width="380"
         height="214"
@@ -28,19 +32,19 @@
       <span class="badge"><%= course.category %></span>
     </div>
     <h3 id="course-<%= course.id %>" class="course-card__title">
-      <%= course.title %>
+      <a href="course-details.html?id=<%= course.id %>"><%= course.title %></a>
     </h3>
     <div class="course-card__meta">
       <span class="course-card__duration" data-i18n-prefix="card.duration"><%= course.duration %></span>
-      <span class="course-card__rating" aria-label="Rating <%= course.rating %> out of 5, <%= course.reviews %> reviews">
-        &#9733; <%= course.rating %> (<%= course.reviews %>)
+      <span class="course-card__rating" aria-label="Rating <%= course.rating %> out of 5, <%= reviewsDisplay %> reviews">
+        &#9733; <%= course.rating %> (<%= reviewsDisplay %>)
       </span>
     </div>
   </div>
 
   <div class="course-card__footer">
     <span class="course-card__price">$<%= course.price %></span>
-    <a href="course-details.html" class="btn btn--primary btn--sm" data-i18n="card.details">Details</a>
+    <a href="course-details.html?id=<%= course.id %>" class="btn btn--primary btn--sm" data-i18n="card.details">Details</a>
   </div>
 
 </article>

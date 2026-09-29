@@ -4,30 +4,45 @@
 @use '../abstracts' as *;
 
 .pagination {
-  @include flex(row, center, center, rem(8));
+  @include flex(row, center, center, rem(6));
 
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
   margin-top: rem(32);
 
   &__list {
-    @include flex(row, center, center, rem(6));
+    @include flex(row, center, center, rem(4));
 
+    flex-wrap: wrap;
     list-style: none;
+
+    @include media-up(md) {
+      gap: rem(6);
+    }
   }
 
   &__link {
     @include flex(inline-flex, center, center);
     @include transition(background-color, color, border-color);
 
-    min-width: rem(40);
-    height: rem(40);
-    padding: rem(6) rem(12);
+    min-width: rem(34);
+    height: rem(34);
+    padding: rem(4) rem(8);
     border: 1px solid $color-border;
     border-radius: $radius-md;
     background-color: $color-surface-alt;
     color: $color-text;
-    font-size: rem(14);
+    font-size: rem(13);
     font-weight: $font-weight-medium;
     cursor: pointer;
+
+    @include media-up(md) {
+      min-width: rem(40);
+      height: rem(40);
+      padding: rem(6) rem(12);
+      font-size: rem(14);
+    }
 
     &:hover {
       background-color: $color-surface;
@@ -47,6 +62,32 @@
       &:hover {
         background-color: shade($color-accent, 10%);
       }
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: $color-surface-alt;
+        border-color: $color-border;
+      }
+    }
+  }
+
+  &__ellipsis {
+    @include flex(inline-flex, center, center);
+
+    min-width: rem(24);
+    height: rem(34);
+    padding: 0 rem(2);
+    font-size: rem(14);
+    color: $color-text-muted;
+    user-select: none;
+
+    @include media-up(md) {
+      height: rem(40);
+      font-size: rem(15);
     }
   }
 }

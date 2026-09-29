@@ -161,3 +161,49 @@
     color: $color-accent;
   }
 }
+
+// Field validation errors & form submission status
+input[aria-invalid='true'] {
+  border-color: #ef4444 !important;
+
+  &:focus-visible {
+    border-color: #ef4444 !important;
+    outline-color: #ef4444 !important;
+  }
+}
+
+[data-error-for] {
+  display: block;
+  margin-top: rem(4);
+  font-size: rem(12);
+  color: #ef4444;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.form-status {
+  margin-top: rem(16);
+  padding: rem(12) rem(16);
+  border-radius: $radius-md;
+  font-size: rem(14);
+  font-weight: $font-weight-medium;
+  text-align: center;
+
+  &:empty {
+    display: none;
+  }
+
+  &--success {
+    color: #15803d;
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+  }
+
+  &--error {
+    color: #b91c1c;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+  }
+}

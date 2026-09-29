@@ -232,3 +232,53 @@
     color: $color-text-muted;
   }
 }
+
+// Student reviews section
+.course-reviews {
+  margin-top: rem(36);
+
+  &__list {
+    @include flex(column, flex-start, stretch, rem(16));
+
+    margin-top: rem(16);
+  }
+}
+
+.course-review {
+  padding: rem(18) rem(20);
+  background-color: $color-surface-alt;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+
+  &__header {
+    @include flex(row, flex-start, center, rem(12));
+
+    margin-bottom: rem(8);
+  }
+
+  &__author {
+    font-size: rem(14);
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+  }
+
+  &__stars {
+    font-size: rem(13);
+    color: #f59e0b;
+    letter-spacing: rem(2);
+  }
+
+  &__date {
+    margin-left: auto;
+    font-size: rem(12);
+    color: $color-text-muted;
+  }
+
+  &__text {
+    margin: 0;
+    font-size: rem(14);
+    line-height: 1.6;
+    color: tint($color-text, 15%);
+  }
+}
