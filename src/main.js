@@ -47,7 +47,9 @@ function initCatalog() {
   });
 
   function syncControls(s) {
-    if (searchInput) searchInput.value = s.q || '';
+    if (searchInput && document.activeElement !== searchInput) {
+      searchInput.value = s.q || '';
+    }
     if (sortSelect) sortSelect.value = `${s.sort}:${s.order}`;
 
     if (domainInputs.length) {
@@ -72,15 +74,23 @@ function initCatalog() {
 
     // Sync mobile sort options and button label
     const currentSortVal = `${s.sort}:${s.order}`;
+    const sortLabels = {
+      'publishedAt:desc': 'Newest',
+      'price:asc': 'Price: Low',
+      'price:desc': 'Price: High',
+      'rating:desc': 'Top Rated',
+    };
+
     if (mobileSortMenu) {
       mobileSortMenu.querySelectorAll('[data-sort-val]').forEach((opt) => {
         const isActive = opt.dataset.sortVal === currentSortVal;
         opt.classList.toggle('mobile-sort-menu__option--active', isActive);
-        if (isActive && mobileSortLabel) {
-          const cleanText = opt.textContent.replace(/^✓\s*/, '').trim();
-          mobileSortLabel.textContent = `Sort: ${cleanText}`;
-        }
       });
+    }
+
+    if (mobileSortLabel) {
+      const activeLabel = sortLabels[currentSortVal];
+      mobileSortLabel.textContent = activeLabel ? `Sort: ${activeLabel}` : 'Sort';
     }
 
     // Sync mobile filter badge count
@@ -139,6 +149,7 @@ function initCatalog() {
     const [sort, order] = event.target.value.split(':');
     state = { ...state, sort, order, page: 1 };
     writeState(state);
+    syncControls(state);
     load();
   });
 
@@ -148,6 +159,7 @@ function initCatalog() {
       const checked = [...domainInputs].filter((c) => c.checked).map((c) => c.value);
       state = { ...state, domain: checked.join(','), page: 1 };
       writeState(state);
+      syncControls(state);
       load();
     });
   });
@@ -158,6 +170,7 @@ function initCatalog() {
       const checked = [...levelInputs].filter((c) => c.checked).map((c) => c.value);
       state = { ...state, level: checked.join(','), page: 1 };
       writeState(state);
+      syncControls(state);
       load();
     });
   });
@@ -185,6 +198,7 @@ function initCatalog() {
   mobileSortBtn?.addEventListener('click', () => {
     const isHidden = mobileSortMenu?.hasAttribute('hidden');
     if (isHidden) {
+      syncControls(state);
       mobileSortMenu?.removeAttribute('hidden');
       mobileSortMenu?.classList.add('is-open');
       mobileSortBtn.setAttribute('aria-expanded', 'true');
@@ -205,13 +219,18 @@ function initCatalog() {
   // Mobile sort options selection
   mobileSortMenu?.addEventListener('click', (event) => {
     const opt = event.target.closest('[data-sort-val]');
-    if (!opt || !sortSelect) return;
-    sortSelect.value = opt.dataset.sortVal;
+    if (!opt) return;
+    const sortVal = opt.dataset.sortVal;
+    if (sortSelect) sortSelect.value = sortVal;
+    const [sort, order] = sortVal.split(':');
+    state = { ...state, sort, order, page: 1 };
+    writeState(state);
+    syncControls(state);
     mobileSortMenu.setAttribute('hidden', '');
     mobileSortMenu.classList.remove('is-open');
     mobileSortBtn?.setAttribute('aria-expanded', 'false');
     mobileSortBtn?.classList.remove('catalog-mobile-actions__btn--active');
-    sortSelect.dispatchEvent(new Event('change'));
+    load();
   });
 
   // Popstate navigation (browser Back / Forward buttons)

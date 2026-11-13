@@ -71,6 +71,12 @@
   }
 
   &__sort {
+    display: none;
+
+    @include media-up(md) {
+      display: block;
+    }
+
     select {
       @include transition(border-color, box-shadow);
 
